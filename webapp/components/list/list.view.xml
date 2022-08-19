@@ -1,0 +1,27 @@
+  
+<mvc:View 
+    controllerName="me.sayazhan.ui5-example-app.components.list.list"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+>
+    <f:DynamicPage>
+        <f:content>
+            <Table id="pending-invoces-table" items="{ path: '/CV_DUMMY' }" mode="SingleSelectLeft"  fixedLayout="false">
+                <columns>
+                    <Column>
+                        <Text text="{i18n>dummyColumn}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{dummyKey}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

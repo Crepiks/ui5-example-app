@@ -1,0 +1,44 @@
+specVersion: '1.0'
+metadata:
+  name: ui5-example-app
+type: application
+resources:
+  configuration:
+    propertiesFileSourceEncoding: UTF-8
+builder:
+  customTasks:
+    - name: webide-extension-task-updateManifestJson
+      beforeTask: generateManifestBundle
+      configuration:
+        appFolder: webapp
+        destDir: dist
+    - name: webide-extension-task-updateNeoApp
+      afterTask: generateVersionInfo
+      configuration:
+        destDir: dist
+        appFolder: webapp
+        nameSpace: me/sayazhan
+    - name: webide-extension-task-lint
+      afterTask: webide-extension-task-updateNeoApp
+      configuration:
+        destDir: dist
+        appFolder: webapp
+        nameSpace: me/sayazhan 
+    - name: webide-extension-task-resources
+      afterTask: webide-extension-task-lint
+      configuration:
+        nameSpace: me/sayazhan
+    - name: babel
+      afterTask: replaceVersion
+server:
+  customMiddleware:
+    - name: ui5-local-neo
+      afterMiddleware: cors
+---
+specVersion: "1.0"
+kind: extension
+type: task
+metadata:
+    name: babel
+task:
+    path: lib/tasks/babel.js

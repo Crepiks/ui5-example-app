@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "ES2015",
+            "DOM"
+        ],
+        "module": "none",
+        "noEmit": true,
+        "checkJs": true,
+        "allowJs": true,
+        "types": [
+            "@sapui5/ts-types",
+            "@types/node",
+            "@types/qunit",
+            "@types/jquery",
+            "@types/sinon"
+        ]
+    }
+}

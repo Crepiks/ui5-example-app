@@ -1,0 +1,109 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "me.sayazhan.ui5-example-app",
+		"type": "application",
+		"i18n": "helpers/i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/backend/xsodata/monitor-fiscal.xsodata",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "mocks/metadata.xml"
+                }
+            }
+        }        
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+
+	"sap.ui5": {
+        "fullWidth": true,
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "me.sayazhan.ui5-example-app.components.app.app",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+                    "bundleName": "me.sayazhan.ui5-example-app.helpers.i18n.i18n"
+				}
+            },
+            "": {
+                "dataSource": "mainService",
+                "settings": {
+                    "useBatch": false
+                }
+            }
+		},
+		"resources": {
+			"css": [{
+				"uri": "assets/themes/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "me.sayazhan.ui5-example-app.components",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [{
+                "pattern": "",
+                "name": "list",
+                "target": "list"
+			}],
+			"targets": {
+				"list": {
+                    "viewName": "list",
+                    "viewId": "list",
+                    "viewPath": "me.sayazhan.ui5-example-app.components.list"
+                }
+			}
+		}
+	}
+}
